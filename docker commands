@@ -1,0 +1,132 @@
+Basic Docker Commands
+
+Version and Info
+
+
+
+docker --version
+docker info
+Help
+
+
+
+docker --help
+docker <command> --help
+
+Image Management
+Pull an Image
+docker pull <image_name>
+
+List Images
+docker images
+Remove an Image
+docker rmi <image_id_or_name>
+
+Build an Image from a Dockerfile
+docker build -t <image_name> <path_to_dockerfile>
+Example:
+docker build -t myapp:latest .
+
+Container Management
+Run a Container
+docker run -d --name <container_name> -p <host_port>:<container_port> <image_name>
+
+Example:
+docker run -d --name my-nginx -p 80:80 nginx
+
+List Running Containers
+docker ps
+
+List All Containers (Including Stopped)
+docker ps -a
+
+Stop a Container
+docker stop <container_id_or_name>
+
+Start a Container
+docker start <container_id_or_name>
+
+Remove a Container
+docker rm <container_id_or_name>
+
+View Container Logs
+docker logs <container_id_or_name>
+
+Execute a Command in a Running Container
+docker exec -it <container_id_or_name> <command>
+Example:
+docker exec -it my-nginx /bin/
+
+Networking
+List Networks
+docker network ls
+
+Create a Network
+docker network create <network_name>
+
+Connect a Container to a Network
+docker network connect <network_name> <container_id_or_name>
+
+Disconnect a Container from a Network
+docker network disconnect <network_name> <container_id_or_name>
+
+Inspect a Network
+docker network inspect <network_name>
+
+Volumes
+
+List Volumes
+docker volume ls
+
+Create a Volume
+docker volume create <volume_name>
+
+Remove a Volume
+docker volume rm <volume_name>
+
+Inspect a Volume
+docker volume inspect <volume_name>
+
+Mount a Volume to a Container
+docker run -d --name <container_name> -v <volume_name>:<container_path> <image_name>
+Example:
+docker run -d --name my-nginx -v my-volume:/usr/share/nginx/html nginx
+
+Docker Compose
+
+Start Services
+docker-compose up
+
+Start Services in Detached Mode
+docker-compose up -d
+
+Stop Services
+docker-compose down
+
+View Logs
+docker-compose logs
+
+Execute a Command in a Service Container
+docker-compose exec <service_name> <command>
+Example:
+docker-compose exec web /bin/
+
+Advanced Commands
+Copy Files/Folders Between a Container and the Local Filesystem
+docker cp <container_id_or_name>:<container_path> <local_path>
+docker cp <local_path> <container_id_or_name>:<container_path>
+
+Commit a Container’s File Changes to a New Image
+docker commit <container_id_or_name> <new_image_name>
+
+Tag an Image
+docker tag <existing_image> <repository>:<tag>
+
+Push an Image to a Docker Repository
+docker push <repository>:<tag>
+
+Login to Docker Hub
+docker login
+
+Logout from Docker Hub
+docker logout
